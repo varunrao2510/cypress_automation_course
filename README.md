@@ -1,1 +1,1 @@
-# cypress_automation_course_varun
+# CYPRESS_AUTOMATION_LEARNING

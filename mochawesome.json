@@ -1,0 +1,443 @@
+{
+  "stats": {
+    "suites": 6,
+    "tests": 8,
+    "passes": 6,
+    "pending": 0,
+    "failures": 2,
+    "testsRegistered": 8,
+    "passPercent": 75,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false,
+    "start": "2024-06-12T11:22:56.113Z",
+    "end": "2024-06-12T11:24:14.371Z",
+    "duration": 78258
+  },
+  "results": [
+    {
+      "uuid": "e7b09f41-f4a1-4e6e-b29d-134b2772f528",
+      "title": "",
+      "fullFile": "cypress/e2e/automation-test-store/add-multiple-items-to-basket.js",
+      "file": "cypress/e2e/automation-test-store/add-multiple-items-to-basket.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "8af2b0b9-4520-4df8-baa9-cad7fbf612f6",
+          "title": "Add multiple items to basket",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Add specific items to basket using POM",
+              "fullTitle": "Add multiple items to basket Add specific items to basket using POM",
+              "timedOut": null,
+              "duration": 7749,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const autostore_homepage_PO = new _Autostore_Homepage_PO.default();\nautostore_homepage_PO.accessHomePage();\nautostore_homepage_PO.clickOnHairCare();\n// cy.visit(\"https://www.automationteststore.com/\")\n// cy.get(\"a[href*='product/category&path']\").contains(\"Hair Care\").click()\nglobalThis.data.productName.forEach(function (element) {\n  cy.addProductTobasket(element);\n});",
+              "err": {},
+              "uuid": "ff47bb91-7637-4870-b2e4-b885dcd7ceba",
+              "parentUUID": "8af2b0b9-4520-4df8-baa9-cad7fbf612f6",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "ff47bb91-7637-4870-b2e4-b885dcd7ceba"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 7749,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "8fcf8f01-b14c-48d9-92df-454169e5d2fa",
+      "title": "",
+      "fullFile": "cypress/e2e/automation-test-store/alias-invoke.js",
+      "file": "cypress/e2e/automation-test-store/alias-invoke.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "6a33dc2a-8ce5-4745-b630-86ba3942e6a1",
+          "title": "Alias and invoke",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Calculate total of normal and sale products",
+              "fullTitle": "Alias and invoke Calculate total of normal and sale products",
+              "timedOut": null,
+              "duration": 5853,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit(\"https://www.automationteststore.com/\");\n//cy.get(\"a[href*='product/category&path']\").contains(\"Hair Care\").click()\ncy.get(\".thumbnail\").as('productThumbnail');\n// cy.get('@productThumbnail').find('.oneprice').each(($el, index, list) => {\n//     cy.log($el.text())\n// })\ncy.get('.thumbnail').find('.oneprice').invoke('text').as('itemPrice');\ncy.get('.thumbnail').find('.pricenew').invoke('text').as('saleItemPrice');\nvar itemsTotal = 0;\ncy.get('@itemPrice').then($linkTest => {\n  var itemPriceTotal = 0;\n  var itemPrice = $linkTest.split('$');\n  var i;\n  for (i = 0; i < itemPrice.length; i++) {\n    cy.log(itemPrice[i]);\n    itemPriceTotal = itemPriceTotal + Number(itemPrice[i]);\n  }\n  itemsTotal += itemPriceTotal;\n  cy.log('Item total proce is:', itemPriceTotal);\n});\ncy.get('@saleItemPrice').then($linkTest => {\n  var itemPriceTotal = 0;\n  var saleItemPrice = $linkTest.split('$');\n  var i;\n  for (i = 0; i < saleItemPrice.length; i++) {\n    cy.log(saleItemPrice[i]);\n    itemPriceTotal = itemPriceTotal + Number(saleItemPrice[i]);\n  }\n  itemsTotal += itemPriceTotal;\n  cy.log('Sale Item total proce is:', itemPriceTotal);\n}).then(() => {\n  cy.log(\"the total price of all product:\", +itemsTotal);\n  expect(itemsTotal).to.eq(648.5);\n});",
+              "err": {},
+              "uuid": "7955131f-3bec-4948-95c7-3e908b40ac12",
+              "parentUUID": "6a33dc2a-8ce5-4745-b630-86ba3942e6a1",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "7955131f-3bec-4948-95c7-3e908b40ac12"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 5853,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "445911d1-0a43-453b-8ef0-f06937db6aa1",
+      "title": "",
+      "fullFile": "cypress/e2e/automation-test-store/contact-us.js",
+      "file": "cypress/e2e/automation-test-store/contact-us.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "8aca6b65-af33-4f03-8b3d-7ad3031f14ff",
+          "title": "Test contact us for via Automation test store",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Should be able to submit successful submission via contact us form",
+              "fullTitle": "Test contact us for via Automation test store Should be able to submit successful submission via contact us form",
+              "timedOut": null,
+              "duration": 443,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit(\"https://www.automationteststore.com/\");\n//select contact\n//cy.get('.info_links_footer > :nth-child(5) > a').click()\ncy.xpath(\"//a[contains(@href,'content/contact')]\").click();\n//type into the form\ncy.get('@user').then(user => {\n  cy.get('#ContactUsFrm_first_name').type(user.first_name);\n  cy.get('#ContactUsFrm_email').type(user.email);\n  cy.get('#ContactUsFrm_email').should('have.attr', 'name', 'email');\n  cy.get('#ContactUsFrm_enquiry').type(\"cypress testing\");\n  cy.get('.col-md-6 > .btn').click();\n  cy.get('.mb40 > :nth-child(3)').should('have.text', 'Your enquiry has been successfully sent to the store owner!');\n});",
+              "err": {
+                "message": "TypeError: cy.xpath is not a function",
+                "estack": "TypeError: cy.xpath is not a function\n    at Context.eval (webpack://cypress_automation_learning/./cypress/e2e/automation-test-store/contact-us.js:15:11)",
+                "diff": null
+              },
+              "uuid": "0a97e532-1a69-4893-b365-195daf9e0cfa",
+              "parentUUID": "8aca6b65-af33-4f03-8b3d-7ad3031f14ff",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "output the text of contact us link",
+              "fullTitle": "Test contact us for via Automation test store output the text of contact us link",
+              "timedOut": null,
+              "duration": 385,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit(\"https://www.automationteststore.com/\");\n//select contact\n//cy.get('.info_links_footer > :nth-child(5) > a').click()\ncy.xpath(\"//a[contains(@href,'content/contact')]\").click().then(function (contectUsText) {\n  cy.log('Click on link using text ' + contectUsText.text());\n});\n//type into the form\ncy.get('#ContactUsFrm_first_name').type(\"Varun S\");\ncy.get('#ContactUsFrm_email').type(\"varunrao2510@gmail.com\");\ncy.get('#ContactUsFrm_email').should('have.attr', 'name', 'email');\ncy.get('#ContactUsFrm_enquiry').type(\"cypress testing\");\ncy.get('.col-md-6 > .btn').click();\ncy.get('.mb40 > :nth-child(3)').should('have.text', 'Your enquiry has been successfully sent to the store owner!');",
+              "err": {
+                "message": "TypeError: cy.xpath is not a function",
+                "estack": "TypeError: cy.xpath is not a function\n    at Context.eval (webpack://cypress_automation_learning/./cypress/e2e/automation-test-store/contact-us.js:31:11)",
+                "diff": null
+              },
+              "uuid": "a6099c24-c126-4285-89cb-cc26f2b2fb36",
+              "parentUUID": "8aca6b65-af33-4f03-8b3d-7ad3031f14ff",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "0a97e532-1a69-4893-b365-195daf9e0cfa",
+            "a6099c24-c126-4285-89cb-cc26f2b2fb36"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 828,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "7a72940e-b84a-414f-ae28-bd801cc64bb2",
+      "title": "",
+      "fullFile": "cypress/e2e/automation-test-store/inspect-item.js",
+      "file": "cypress/e2e/automation-test-store/inspect-item.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "d2180151-4858-4ef6-872f-feb77b9c714d",
+          "title": "Inspect automation test store items using chain of commands",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Click on first item using item header using then function",
+              "fullTitle": "Inspect automation test store items using chain of commands Click on first item using item header using then function",
+              "timedOut": null,
+              "duration": 7990,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit(\"https://www.automationteststore.com/\");\ncy.get('.prdocutname').contains('Skinsheen Bronzer Stick').click().then(function (headernameText) {\n  cy.log('Selected the following item ' + headernameText.text());\n});",
+              "err": {},
+              "uuid": "fa5b7782-decc-40d2-9b53-abd84b938c00",
+              "parentUUID": "d2180151-4858-4ef6-872f-feb77b9c714d",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "fa5b7782-decc-40d2-9b53-abd84b938c00"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 7990,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "004764d3-a516-42a6-9bed-52cccee36327",
+      "title": "",
+      "fullFile": "cypress/e2e/automation-test-store/iterate-over-elements-cust-commands.js",
+      "file": "cypress/e2e/automation-test-store/iterate-over-elements-cust-commands.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "1a3371e4-3814-4af1-975d-2eea6fc7acd7",
+          "title": "Iterate over elements",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Add specific product to cart",
+              "fullTitle": "Iterate over elements Add specific product to cart",
+              "timedOut": null,
+              "duration": 9440,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit(\"https://www.automationteststore.com/\");\ncy.selectProduct('Curls to straight Shampoo');",
+              "err": {},
+              "uuid": "cf2caa57-6f5b-4aee-bdb5-9fb0a08795b0",
+              "parentUUID": "1a3371e4-3814-4af1-975d-2eea6fc7acd7",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Add specific product to cart",
+              "fullTitle": "Iterate over elements Add specific product to cart",
+              "timedOut": null,
+              "duration": 8490,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit(\"https://www.automationteststore.com/\");\ncy.selectProduct('Eau Parfumee au The Vert Shampoo');",
+              "err": {},
+              "uuid": "68f1b43d-f33d-42c2-8704-f936ae49d4a1",
+              "parentUUID": "1a3371e4-3814-4af1-975d-2eea6fc7acd7",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "cf2caa57-6f5b-4aee-bdb5-9fb0a08795b0",
+            "68f1b43d-f33d-42c2-8704-f936ae49d4a1"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 17930,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "8d89017a-ee38-4b2c-a98f-deebe9c383d0",
+      "title": "",
+      "fullFile": "cypress/e2e/automation-test-store/iterate-over-elements.js",
+      "file": "cypress/e2e/automation-test-store/iterate-over-elements.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "064ef675-f840-4129-8569-9a9d515089a6",
+          "title": "Iterate over elements",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Add specific product to cart",
+              "fullTitle": "Iterate over elements Add specific product to cart",
+              "timedOut": null,
+              "duration": 9308,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit(\"https://www.automationteststore.com/\");\ncy.get(\"a[href*='product/category&path']\").contains(\"Hair Care\").click();\ncy.get(\".fixed_wrapper .prdocutname\").each(($el, index) => {\n  if ($el.text().includes('Curls to straight Shampoo')) {\n    cy.wrap($el).click();\n  }\n});",
+              "err": {},
+              "uuid": "9ed0b66f-1c9d-4483-acfd-eb6dadb47ed9",
+              "parentUUID": "064ef675-f840-4129-8569-9a9d515089a6",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "9ed0b66f-1c9d-4483-acfd-eb6dadb47ed9"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 9308,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "cypress/results/mochawesome",
+        "quite": true,
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}
