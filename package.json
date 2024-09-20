@@ -19,7 +19,7 @@
   "author": "Varun S Rao",
   "license": "ISC",
   "devDependencies": {
-    "cypress": "^13.10.0",
+    "cypress": "^13.14.2",
     "cypress-multi-reporters": "^1.6.4",
     "cypress-xpath": "^2.0.1",
     "mocha-junit-reporter": "^2.2.1",
